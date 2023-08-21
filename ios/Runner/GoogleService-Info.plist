@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>257020829815-j8gvnr1ksm90edsl3qpb4oumnfcr6tpl.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.257020829815-j8gvnr1ksm90edsl3qpb4oumnfcr6tpl</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD4dmFmR6OZBBY2eEeyZZbg7866rJK-B1c</string>
+	<key>GCM_SENDER_ID</key>
+	<string>257020829815</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.quickPickApp</string>
+	<key>PROJECT_ID</key>
+	<string>quick-pick-app-35c4e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>quick-pick-app-35c4e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:257020829815:ios:e37618949b7e3772bbe672</string>
+</dict>
+</plist>
