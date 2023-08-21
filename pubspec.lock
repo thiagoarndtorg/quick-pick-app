@@ -106,7 +106,7 @@ packages:
     source: hosted
     version: "2.2.1"
   build_runner:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: build_runner
       sha256: "10c6bcdbf9d049a0b666702cf1cee4ddfdc38f02a19d35ae392863b47519848b"
@@ -433,7 +433,7 @@ packages:
     source: hosted
     version: "4.8.1"
   lint:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       name: lint
       sha256: f4bd4dbaa39f4ae8836f2d1275f2f32bc68b3a8cce0a0735dd1f7a601f06682a
@@ -576,14 +576,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.1"
-  retrofit_generator:
-    dependency: "direct main"
-    description:
-      name: retrofit_generator
-      sha256: "9499eb46b3657a62192ddbc208ff7e6c6b768b19e83c1ee6f6b119c864b99690"
-      url: "https://pub.dev"
-    source: hosted
-    version: "7.0.8"
   shelf:
     dependency: transitive
     description:
@@ -725,14 +717,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
-  tuple:
-    dependency: transitive
-    description:
-      name: tuple
-      sha256: a97ce2013f240b2f3807bcbaf218765b6f301c3eff91092bcfa23a039e7dd151
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.2"
   typed_data:
     dependency: transitive
     description:
