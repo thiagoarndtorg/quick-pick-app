@@ -1,14 +1,11 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:quick_pick_app/routes/app_router.dart';
-import 'firebase_options.dart';
+import 'package:quick_pick_app/src/config/hive_config.dart';
+import 'package:quick_pick_app/src/utils/app_colors.dart';
 
 void main() async {
+  await HiveConfig.init();
   runApp(const MyApp());
-
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
 }
 
 class MyApp extends StatelessWidget {
@@ -18,7 +15,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     AppRouter appRouter = AppRouter();
     return MaterialApp.router(
-        //routerConfig: appRouter.config(),
-        );
+      theme: ThemeData(
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+        primary: appColorPrimary,
+      )),
+      routerConfig: appRouter.config(),
+    );
   }
 }
