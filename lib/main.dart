@@ -18,8 +18,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       theme: ThemeData(
           colorScheme: ColorScheme.fromSwatch().copyWith(
-        primary: appColorPrimary,
-      )),
+            primary: appColorPrimary,
+          ),
+          primaryColor: appColorPrimary,
+          iconTheme: IconThemeData(color: appColorIcon)),
       routerConfig: appRouter.config(),
     );
   }

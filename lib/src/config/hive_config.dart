@@ -11,7 +11,12 @@ class HiveConfig {
     var userBox = await Hive.openBox<UserModel>(
       'userBox',
     );
-
-    userBox.clear();
+    await userBox.put(
+        'userData',
+        UserModel(
+          token: 'Teste',
+          userName: 'Taiga',
+        ));
+    // await userBox.clear();
   }
 }

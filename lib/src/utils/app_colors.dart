@@ -7,3 +7,4 @@ const appColorTitle = Color(0xFF333333);
 const appColorDescription = Color(0xFF999999);
 const appColorBackground = Color(0xFFF7FBFF);
 const appColorBorder = Color(0XFFF3F3F3);
+const appColorIcon = Color(0xFFC6C6C6);
