@@ -1,4 +1,5 @@
 import "package:auto_route/auto_route.dart";
+import 'package:quick_pick_app/routes/utils/auth_guard.dart';
 
 import 'app_router.gr.dart';
 
@@ -6,7 +7,21 @@ import 'app_router.gr.dart';
 class AppRouter extends $AppRouter {
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: LoginMain.page, initial: true, path: '/login')
+        AutoRoute(page: RegisterMain.page, path: '/register'),
+        AutoRoute(page: LoginMain.page, path: '/login'),
+        AutoRoute(
+            page: BottomNavigationMain.page,
+            initial: true,
+            path: '/',
+            guards: [
+              AuthGuard()
+            ],
+            children: [
+              AutoRoute(page: HomeMain.page, path: 'home'),
+              AutoRoute(page: OrdersMain.page, path: 'orders'),
+              AutoRoute(page: SearchMain.page, path: 'search'),
+              AutoRoute(page: ProfileMain.page, path: 'profile'),
+            ]),
       ];
 }
 

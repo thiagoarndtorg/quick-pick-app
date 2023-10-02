@@ -4,11 +4,14 @@ class ButtonApp extends StatelessWidget {
   final String title;
   final Color backgroundColor;
   final Color textColor;
-  const ButtonApp(
-      {super.key,
-      required this.backgroundColor,
-      required this.title,
-      required this.textColor});
+  final void Function()? onPressed;
+  const ButtonApp({
+    super.key,
+    required this.backgroundColor,
+    required this.title,
+    required this.textColor,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +23,7 @@ class ButtonApp extends StatelessWidget {
             TextStyle(fontWeight: FontWeight.bold, color: textColor),
       ),
       style: ElevatedButton.styleFrom(
+        shadowColor: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(9), // <-- Radius
         ),
@@ -28,7 +32,7 @@ class ButtonApp extends StatelessWidget {
         backgroundColor: backgroundColor,
         elevation: 0,
       ),
-      onPressed: () {},
+      onPressed: onPressed,
     );
   }
 }

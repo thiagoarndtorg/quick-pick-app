@@ -36,6 +36,8 @@ dependencies:
   get: ^4.6.6
   hive_flutter: ^1.1.0
   feather_icons: ^1.2.0
+  salomon_bottom_bar: ^3.3.2
+  font_awesome_flutter: ^10.5.0
 
 
 dev_dependencies:

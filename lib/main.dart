@@ -5,6 +5,7 @@ import 'package:quick_pick_app/src/utils/app_colors.dart';
 
 void main() async {
   await HiveConfig.init();
+
   runApp(const MyApp());
 }
 

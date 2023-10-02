@@ -32,7 +32,7 @@ class _TextFieldAppState extends State<TextFieldApp> {
   Widget build(BuildContext context) {
     return TextField(
       controller: widget.controller,
-      obscureText: !_passwordVisible,
+      obscureText: widget.isPassword,
       keyboardType: widget.inputType,
       decoration: InputDecoration(
         focusedBorder: OutlineInputBorder(
