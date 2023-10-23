@@ -1,10 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
-
 import 'package:quick_pick_app/routes/app_router.gr.dart';
 import 'package:quick_pick_app/src/utils/common/widgets/app_bar_app.dart';
-
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 @RoutePage()
@@ -24,6 +22,7 @@ class _BottomNavigationMainState extends State<BottomNavigationMain> {
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
+      resizeToAvoidBottomInset: false,
       appBarBuilder: (context, tabsRouter) {
         return AppBarApp();
       },
@@ -35,7 +34,7 @@ class _BottomNavigationMainState extends State<BottomNavigationMain> {
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
         return SalomonBottomBarCustom(
-          margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          margin: EdgeInsets.symmetric(horizontal: 20),
           currentIndex: tabsRouter.activeIndex,
           onTap: tabsRouter.setActiveIndex,
           items: [

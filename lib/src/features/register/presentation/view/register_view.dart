@@ -33,9 +33,7 @@ class _RegisterViewState extends State<RegisterView> {
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: true,
-        appBar: AppBarApp(
-            onBackPressed: () =>
-                context.router.replaceNamed('/login')),
+        appBar: AppBarApp(onBackPressed: () => context.router.replaceNamed('/login')),
         body: CustomScrollView(
           slivers: [
             SliverFillRemaining(
@@ -43,13 +41,11 @@ class _RegisterViewState extends State<RegisterView> {
               child: Container(
                   height: MediaQuery.of(context).size.height - 120,
                   child: Padding(
-                    padding: EdgeInsets.only(
-                        top: 0, right: 20, left: 20, bottom: 20),
+                    padding: EdgeInsets.only(top: 0, right: 20, left: 20, bottom: 20),
                     child: Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 30),
+                          padding: const EdgeInsets.symmetric(vertical: 30),
                           child: Wrap(
                             alignment: WrapAlignment.center,
                             runSpacing: 5,
@@ -57,15 +53,12 @@ class _RegisterViewState extends State<RegisterView> {
                               Text(
                                 'Fazer cadastro',
                                 textScaleFactor: 2,
-                                style: TextStyle(
-                                    color: appColorTitle,
-                                    fontWeight: FontWeight.w600),
+                                style: TextStyle(color: appColorTitle, fontWeight: FontWeight.w600),
                               ),
                               Text(
                                 'Insira suas informações aqui em baixo',
                                 textScaleFactor: 1.2,
-                                style: TextStyle(
-                                    color: appColorDescription),
+                                style: TextStyle(color: appColorDescription),
                               ),
                             ],
                           ),
@@ -101,8 +94,7 @@ class _RegisterViewState extends State<RegisterView> {
                               TextFieldApp(
                                 title: 'Confirmar Senha',
                                 icon: FeatherIcons.lock,
-                                controller:
-                                    textConfirmPasswordController,
+                                controller: textConfirmPasswordController,
                                 inputType: TextInputType.text,
                                 isPassword: true,
                               ),
