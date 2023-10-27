@@ -38,9 +38,11 @@ class _HomeViewState extends State<HomeView> with UserHiveMixin {
               spacing: 5,
               children: [
                 Text(
-                  'Bem vindo, ${userData?.userName}! 👋',
+                  'Bem vindo, ${userData?.name}! 👋',
                   textScaleFactor: 1.8,
-                  style: TextStyle(color: appColorTitle, fontWeight: FontWeight.w600),
+                  style: TextStyle(
+                      color: appColorTitle,
+                      fontWeight: FontWeight.w600),
                 ),
                 Text(
                   'O que você vai pedir hoje?',
@@ -60,7 +62,7 @@ class _HomeViewState extends State<HomeView> with UserHiveMixin {
                 viewportFraction: 0.9,
                 enableInfiniteScroll: false,
                 enlargeCenterPage: true,
-                enlargeFactor: 0.015,
+                enlargeFactor: 0.2,
               ),
               items: [1, 2, 3, 4, 5].map((i) {
                 return Builder(
@@ -71,9 +73,12 @@ class _HomeViewState extends State<HomeView> with UserHiveMixin {
                       decoration: ShapeDecoration(
                         color: Colors.black,
                         image: DecorationImage(
-                            image: AssetImage('assets/images/waffles2.png'),
+                            image: AssetImage(
+                                'assets/images/waffles2.png'),
                             fit: BoxFit.cover,
-                            colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.9), BlendMode.dstIn)),
+                            colorFilter: ColorFilter.mode(
+                                Colors.black.withOpacity(0.9),
+                                BlendMode.dstIn)),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18),
                         ),

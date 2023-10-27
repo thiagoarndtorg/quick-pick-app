@@ -28,7 +28,9 @@ class RestaurantCardApp extends StatelessWidget {
                   Text(
                     'Kalzone',
                     textScaleFactor: 1.2,
-                    style: TextStyle(color: appColorTitle, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        color: appColorTitle,
+                        fontWeight: FontWeight.bold),
                   ),
                   Text(
                     'Shopping Muller',
@@ -39,8 +41,10 @@ class RestaurantCardApp extends StatelessWidget {
             ],
           ),
           Text(
-            '24 pessoas na fila',
-            style: TextStyle(fontWeight: FontWeight.bold, color: appColorDescription),
+            '24 na fila',
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: appColorDescription),
           )
         ],
       ),
