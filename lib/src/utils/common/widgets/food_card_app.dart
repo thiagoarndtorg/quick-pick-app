@@ -25,12 +25,15 @@ class _FoodCardAppState extends State<FoodCardApp> with ImageDataMixin {
               if (snapshot.hasData) {
                 bool item = snapshot.data!;
                 return item
-                    ? ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        child: Image.network(
-                          widget.item.image!,
-                          width: 120,
-                          height: 120,
+                    ? Container(
+                        width: 120,
+                        height: 120,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          child: Image.network(
+                            fit: BoxFit.cover,
+                            widget.item.image!,
+                          ),
                         ),
                       )
                     : Container(

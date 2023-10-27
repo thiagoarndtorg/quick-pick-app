@@ -32,10 +32,16 @@ class _RestaurantCardAppState extends State<RestaurantCardApp> with ImageDataMix
                   if (snapshot.hasData) {
                     bool item = snapshot.data!;
                     return item
-                        ? Image.network(
-                            widget.menuModel.image!,
+                        ? Container(
                             width: 70,
                             height: 70,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              child: Image.network(
+                                fit: BoxFit.cover,
+                                widget.menuModel.image!,
+                              ),
+                            ),
                           )
                         : Container(
                             decoration: BoxDecoration(

@@ -106,14 +106,17 @@ class _RestaurantViewState extends State<RestaurantView> with ImageDataMixin {
                                                       borderRadius: BorderRadius.all(Radius.circular(10))),
                                                   width: 100,
                                                   height: 100,
-
-                                                  // child:
-                                                  // ClipRRect(
-                                                  //   borderRadius: BorderRadius.circular(8.0),
-                                                  //   child: Image.asset(
-                                                  //     'assets/images/kalzone_image.png',
-                                                  //   ),
-                                                  // ),
+                                                  child: ClipRRect(
+                                                    borderRadius: BorderRadius.circular(8.0),
+                                                    child: menuModel!.image != null
+                                                        ? Image.network(
+                                                            fit: BoxFit.cover,
+                                                            menuModel!.image!,
+                                                          )
+                                                        : Container(
+                                                            color: Colors.grey,
+                                                          ),
+                                                  ),
                                                 ),
                                                 SizedBox(width: 8),
                                                 Container(
