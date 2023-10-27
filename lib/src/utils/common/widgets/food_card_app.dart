@@ -27,7 +27,7 @@ class _FoodCardAppState extends State<FoodCardApp> with ImageDataMixin {
                 return item
                     ? ClipRRect(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
-                        child: Image.asset(
+                        child: Image.network(
                           widget.item.image!,
                           width: 120,
                           height: 120,
