@@ -125,6 +125,7 @@ class _RegisterViewState extends State<RegisterView> {
                       icon: FeatherIcons.lock,
                       controller: textPasswordController,
                       inputType: TextInputType.text,
+                      isPassword: true,
                     ),
                     TextFieldApp(
                       title: 'Confirmar Senha',

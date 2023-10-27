@@ -146,7 +146,7 @@ class _RestaurantViewState extends State<RestaurantView> with ImageDataMixin {
                                             ),
                                             Container(
                                               padding: EdgeInsets.only(top: 30),
-                                              child: Text('24 na fila', style: TextStyle(color: appColorDescription)),
+                                              child: Text('0 na fila', style: TextStyle(color: appColorDescription)),
                                             )
                                           ],
                                         ),

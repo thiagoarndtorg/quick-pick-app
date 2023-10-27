@@ -31,7 +31,7 @@ class _TextFieldAppState extends State<TextFieldApp> {
   late bool _passwordVisible;
   @override
   void initState() {
-    _passwordVisible = false;
+    _passwordVisible = widget.isPassword ? true : false;
     super.initState();
   }
 
@@ -44,7 +44,7 @@ class _TextFieldAppState extends State<TextFieldApp> {
       },
       inputFormatters: widget.formatters,
       controller: widget.controller,
-      obscureText: widget.isPassword,
+      obscureText: _passwordVisible,
       keyboardType: widget.inputType,
       decoration: InputDecoration(
         focusedBorder: OutlineInputBorder(
@@ -57,7 +57,7 @@ class _TextFieldAppState extends State<TextFieldApp> {
         suffixIcon: widget.isPassword
             ? IconButton(
                 icon: Icon(
-                  _passwordVisible ? FeatherIcons.eye : FeatherIcons.eyeOff,
+                  _passwordVisible ? FeatherIcons.eyeOff : FeatherIcons.eye,
                   size: 22,
                   color: appColorDescription,
                 ),
