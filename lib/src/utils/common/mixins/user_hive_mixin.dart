@@ -5,4 +5,8 @@ mixin UserHiveMixin {
   UserModel? getUserData() {
     return Hive.box<UserModel>('userBox').get('userData');
   }
+
+  void removeUserData() async {
+    await Hive.box<UserModel>('userBox').clear();
+  }
 }

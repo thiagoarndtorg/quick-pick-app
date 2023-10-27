@@ -9,7 +9,7 @@ class HiveConfig {
     // ORGANIZE HIVE, ADAPTERS AND BOXES
     Hive.registerAdapter(UserModelAdapter()); // 0
     Hive.registerAdapter(AddressModelAdapter()); // 1
-    var userBox = await Hive.openBox<UserModel>(
+    await Hive.openBox<UserModel>(
       'userBox',
     );
 

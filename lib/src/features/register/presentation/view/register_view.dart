@@ -38,20 +38,29 @@ class _RegisterViewState extends State<RegisterView> {
     super.initState();
   }
 
+  @override
+  void dispose() {
+    textNameController.dispose();
+    textTelephoneController.dispose();
+    textEmailController.dispose();
+    textPasswordController.dispose();
+    textConfirmPasswordController.dispose();
+    textCepController.dispose();
+    textCpfController.dispose();
+    super.dispose();
+  }
+
   final RegisterController registerController = RegisterController();
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: true,
-        appBar: AppBarApp(
-            onBackPressed: () =>
-                context.router.replaceNamed('/login')),
+        appBar: AppBarApp(onBackPressed: () => context.router.replaceNamed('/login')),
         body: SingleChildScrollView(
             child: Container(
                 child: Padding(
-          padding: EdgeInsets.only(
-              top: 0, right: 20, left: 20, bottom: 20),
+          padding: EdgeInsets.only(top: 0, right: 20, left: 20, bottom: 20),
           child: Column(
             children: [
               Padding(
@@ -63,9 +72,7 @@ class _RegisterViewState extends State<RegisterView> {
                     Text(
                       'Fazer cadastro',
                       textScaleFactor: 2,
-                      style: TextStyle(
-                          color: appColorTitle,
-                          fontWeight: FontWeight.w600),
+                      style: TextStyle(color: appColorTitle, fontWeight: FontWeight.w600),
                     ),
                     Text(
                       'Insira suas informações aqui em baixo',
@@ -87,30 +94,21 @@ class _RegisterViewState extends State<RegisterView> {
                       inputType: TextInputType.text,
                     ),
                     TextFieldApp(
-                      formatters: [
-                        CepInputFormatter(),
-                        FilteringTextInputFormatter.digitsOnly
-                      ],
+                      formatters: [CepInputFormatter(), FilteringTextInputFormatter.digitsOnly],
                       title: 'Cep',
                       icon: FontAwesomeIcons.addressCard,
                       controller: textCepController,
                       inputType: TextInputType.number,
                     ),
                     TextFieldApp(
-                      formatters: [
-                        CpfInputFormatter(),
-                        FilteringTextInputFormatter.digitsOnly
-                      ],
+                      formatters: [CpfInputFormatter(), FilteringTextInputFormatter.digitsOnly],
                       title: 'Cpf',
                       icon: FeatherIcons.penTool,
                       controller: textCpfController,
                       inputType: TextInputType.text,
                     ),
                     TextFieldApp(
-                      formatters: [
-                        FilteringTextInputFormatter.digitsOnly,
-                        TelefoneInputFormatter()
-                      ],
+                      formatters: [FilteringTextInputFormatter.digitsOnly, TelefoneInputFormatter()],
                       title: 'Celular',
                       icon: FeatherIcons.phone,
                       controller: textTelephoneController,
@@ -142,8 +140,7 @@ class _RegisterViewState extends State<RegisterView> {
               ButtonApp(
                 onPressed: (() async {
                   if (_formKey.currentState!.validate()) {
-                    if (textPasswordController.text !=
-                        textConfirmPasswordController.text) {
+                    if (textPasswordController.text != textConfirmPasswordController.text) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text('As senhas não são iguais'),

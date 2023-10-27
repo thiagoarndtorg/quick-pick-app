@@ -20,6 +20,29 @@ class _HomeViewState extends State<HomeView> with UserHiveMixin {
     super.initState();
   }
 
+  List<dynamic> list = [
+    {
+      'name': 'Macarrão saboroso',
+      'desc': '10% de desconto fim de semana',
+      'image': 'food1.jpg',
+    },
+    {
+      'name': 'Bolo delicioso',
+      'desc': '50% de desconto durante semana',
+      'image': 'food2.jpg',
+    },
+    {
+      'name': 'Rocamboli divíno',
+      'desc': '20% de desconto terças-feiras',
+      'image': 'food3.jpg',
+    },
+    {
+      'name': 'Almoço completo',
+      'desc': 'Leve uma coca-cola de brinde',
+      'image': 'food4.jpg',
+    }
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,9 +63,7 @@ class _HomeViewState extends State<HomeView> with UserHiveMixin {
                 Text(
                   'Bem vindo, ${userData?.name}! 👋',
                   textScaleFactor: 1.8,
-                  style: TextStyle(
-                      color: appColorTitle,
-                      fontWeight: FontWeight.w600),
+                  style: TextStyle(color: appColorTitle, fontWeight: FontWeight.w600),
                 ),
                 Text(
                   'O que você vai pedir hoje?',
@@ -64,7 +85,7 @@ class _HomeViewState extends State<HomeView> with UserHiveMixin {
                 enlargeCenterPage: true,
                 enlargeFactor: 0.2,
               ),
-              items: [1, 2, 3, 4, 5].map((i) {
+              items: list.map((item) {
                 return Builder(
                   builder: (BuildContext context) {
                     return Container(
@@ -73,12 +94,9 @@ class _HomeViewState extends State<HomeView> with UserHiveMixin {
                       decoration: ShapeDecoration(
                         color: Colors.black,
                         image: DecorationImage(
-                            image: AssetImage(
-                                'assets/images/waffles2.png'),
+                            image: AssetImage('assets/images/${item['image']}'),
                             fit: BoxFit.cover,
-                            colorFilter: ColorFilter.mode(
-                                Colors.black.withOpacity(0.9),
-                                BlendMode.dstIn)),
+                            colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.8), BlendMode.dstIn)),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18),
                         ),
@@ -89,7 +107,7 @@ class _HomeViewState extends State<HomeView> with UserHiveMixin {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Café da manhã',
+                            item['name'],
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.white,
@@ -99,9 +117,9 @@ class _HomeViewState extends State<HomeView> with UserHiveMixin {
                               height: 0.06,
                             ),
                           ),
-                          const SizedBox(height: 3),
+                          const SizedBox(height: 20),
                           Text(
-                            '50% de desconto durante a manhã',
+                            item['desc'],
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.white,

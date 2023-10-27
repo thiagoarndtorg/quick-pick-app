@@ -38,8 +38,7 @@ class _LoginViewState extends State<LoginView> {
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(
-                      top: 20, right: 20, left: 20, bottom: 90),
+                  padding: EdgeInsets.only(top: 20, right: 20, left: 20, bottom: 90),
                   child: Wrap(
                     alignment: WrapAlignment.center,
                     runSpacing: 20,
@@ -49,8 +48,7 @@ class _LoginViewState extends State<LoginView> {
                         width: 200,
                       ),
                       Padding(
-                        padding:
-                            const EdgeInsets.symmetric(vertical: 20),
+                        padding: const EdgeInsets.symmetric(vertical: 20),
                         child: Wrap(
                           alignment: WrapAlignment.center,
                           runSpacing: 5,
@@ -63,8 +61,7 @@ class _LoginViewState extends State<LoginView> {
                             Text(
                               'Faça o seu login aqui em baixo',
                               textScaleFactor: 1.2,
-                              style: TextStyle(
-                                  color: appColorDescription),
+                              style: TextStyle(color: appColorDescription),
                             ),
                           ],
                         ),
@@ -84,10 +81,19 @@ class _LoginViewState extends State<LoginView> {
                       ),
                       ButtonApp(
                         onPressed: (() async {
-                          await loginController.loginUser(
-                            textEmailController.text,
-                            textPasswordController.text,
-                          );
+                          try {
+                            await loginController.loginUser(
+                              textEmailController.text,
+                              textPasswordController.text,
+                            );
+                          } catch (e) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('Credenciais inválidas'),
+                                backgroundColor: Colors.red,
+                              ),
+                            );
+                          }
 
                           await context.router.replaceNamed('/');
                         }),

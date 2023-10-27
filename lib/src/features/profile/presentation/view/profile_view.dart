@@ -1,6 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:quick_pick_app/src/utils/app_colors.dart';
+import 'package:quick_pick_app/src/utils/common/domain/user_model.dart';
+import 'package:quick_pick_app/src/utils/common/mixins/user_hive_mixin.dart';
 import 'package:quick_pick_app/src/utils/common/widgets/button_app.dart';
 import 'package:quick_pick_app/src/utils/common/widgets/text_field_app.dart';
 
@@ -11,11 +15,20 @@ class ProfileView extends StatefulWidget {
   State<ProfileView> createState() => _ProfileViewState();
 }
 
-class _ProfileViewState extends State<ProfileView> {
+class _ProfileViewState extends State<ProfileView> with UserHiveMixin {
   TextEditingController userName = TextEditingController();
   TextEditingController userTelephone = TextEditingController();
   TextEditingController userEmail = TextEditingController();
   TextEditingController userPassword = TextEditingController();
+
+  UserModel? userModel;
+
+  @override
+  void initState() {
+    userModel = getUserData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -44,50 +57,23 @@ class _ProfileViewState extends State<ProfileView> {
                         ),
                       ),
                       Text(
-                        'Taiga da Silva',
+                        userModel != null ? userModel!.name ?? '' : '',
                         textScaleFactor: 1.6,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       )
                     ],
                   ),
                   SizedBox(height: 30),
-                  Wrap(
-                    runSpacing: 15,
-                    children: [
-                      TextFieldApp(
-                        title: 'Nome do usuário',
-                        icon: FeatherIcons.user,
-                        inputType: TextInputType.text,
-                        controller: userName,
-                      ),
-                      TextFieldApp(
-                        title: 'Telefone do usuário',
-                        icon: FeatherIcons.phone,
-                        inputType: TextInputType.text,
-                        controller: userName,
-                      ),
-                      TextFieldApp(
-                        title: 'Email do usuário',
-                        icon: FeatherIcons.mail,
-                        inputType: TextInputType.text,
-                        controller: userName,
-                      ),
-                      TextFieldApp(
-                        title: 'Senha do Usuário',
-                        icon: FeatherIcons.lock,
-                        inputType: TextInputType.text,
-                        controller: userName,
-                      ),
-                    ],
-                  ),
                 ],
               ),
-              SizedBox(height: 100),
               ButtonApp(
-                backgroundColor: appColorPrimary,
-                title: 'Salvar alterações',
+                backgroundColor: Colors.red,
+                title: 'Sair da Conta',
                 textColor: appColorWhite,
-                onPressed: () => setState(() {}),
+                onPressed: () async {
+                  removeUserData();
+                  await context.router.replaceNamed('/login');
+                },
               )
             ],
           ),

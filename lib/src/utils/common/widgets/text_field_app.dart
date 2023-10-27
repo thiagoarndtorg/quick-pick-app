@@ -11,6 +11,7 @@ class TextFieldApp extends StatefulWidget {
   final TextInputType inputType;
   final TextEditingController controller;
   final List<TextInputFormatter> formatters;
+  final void Function(String)? onChanged;
   const TextFieldApp({
     super.key,
     required this.title,
@@ -19,6 +20,7 @@ class TextFieldApp extends StatefulWidget {
     required this.controller,
     this.isPassword = false,
     this.formatters = const [],
+    this.onChanged,
   });
 
   @override
@@ -36,6 +38,7 @@ class _TextFieldAppState extends State<TextFieldApp> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: widget.onChanged,
       validator: (value) {
         return value!.isEmpty ? 'Campo obrigatório' : null;
       },
@@ -54,9 +57,7 @@ class _TextFieldAppState extends State<TextFieldApp> {
         suffixIcon: widget.isPassword
             ? IconButton(
                 icon: Icon(
-                  _passwordVisible
-                      ? FeatherIcons.eye
-                      : FeatherIcons.eyeOff,
+                  _passwordVisible ? FeatherIcons.eye : FeatherIcons.eyeOff,
                   size: 22,
                   color: appColorDescription,
                 ),
@@ -67,8 +68,7 @@ class _TextFieldAppState extends State<TextFieldApp> {
                 },
               )
             : null,
-        prefixIcon:
-            Icon(widget.icon, size: 22, color: appColorDescription),
+        prefixIcon: Icon(widget.icon, size: 22, color: appColorDescription),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(width: 2, color: appColorBorder),
           borderRadius: BorderRadius.circular(9.0),
