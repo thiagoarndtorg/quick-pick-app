@@ -3,10 +3,11 @@ import 'dart:developer';
 import 'package:auto_route/auto_route.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:quick_pick_app/routes/app_router.gr.dart';
 import 'package:quick_pick_app/src/features/restaurant/application/restaurant_controller.dart';
 import 'package:quick_pick_app/src/features/restaurant/data/model/restaurant_model.dart';
-import 'package:quick_pick_app/src/features/search/data/models/menu_model.dart';
 import 'package:quick_pick_app/src/utils/app_colors.dart';
+import 'package:quick_pick_app/src/utils/common/domain/restaurant_model.dart';
 import 'package:quick_pick_app/src/utils/common/mixins/image_data_mixin.dart';
 import 'package:quick_pick_app/src/utils/common/widgets/app_bar_app.dart';
 import 'package:quick_pick_app/src/utils/common/widgets/food_card_app.dart';
@@ -27,12 +28,12 @@ class _RestaurantViewState extends State<RestaurantView> with ImageDataMixin {
   List<FoodModel> items = [];
   List<FoodModel> duplicateItems = [];
   Future<List<FoodModel>>? futureList;
-  MenuModel? menuModel;
+  RestaurantModel? menuModel;
   void filterSearchResults(
     String query,
   ) {
     setState(() {
-      items = duplicateItems.where((item) => item.name!.toLowerCase().contains(query.toLowerCase())).toList();
+      items = duplicateItems.where((item) => item.foodName!.toLowerCase().contains(query.toLowerCase())).toList();
     });
   }
 
@@ -47,6 +48,7 @@ class _RestaurantViewState extends State<RestaurantView> with ImageDataMixin {
 
   void _getRestaurant() async {
     menuModel = await _restaurantController.getRestaurant(widget.restaurantId.toString());
+
     setState(() {});
   }
 
@@ -108,10 +110,10 @@ class _RestaurantViewState extends State<RestaurantView> with ImageDataMixin {
                                                   height: 100,
                                                   child: ClipRRect(
                                                     borderRadius: BorderRadius.circular(8.0),
-                                                    child: menuModel!.image != null
+                                                    child: menuModel?.menu?.image != null
                                                         ? Image.network(
                                                             fit: BoxFit.cover,
-                                                            menuModel!.image!,
+                                                            menuModel!.menu!.image!,
                                                           )
                                                         : Container(
                                                             color: Colors.grey,
@@ -178,8 +180,14 @@ class _RestaurantViewState extends State<RestaurantView> with ImageDataMixin {
                                 itemCount: items.length,
                                 itemBuilder: (context, index) {
                                   FoodModel item = items[index];
-                                  return FoodCardApp(
-                                    item: item,
+                                  return GestureDetector(
+                                    onTap: () async {
+                                      print(item);
+                                      await context.router.navigate(FoodMain(foodId: item.foodId!));
+                                    },
+                                    child: FoodCardApp(
+                                      item: item,
+                                    ),
                                   );
                                 },
                               ),

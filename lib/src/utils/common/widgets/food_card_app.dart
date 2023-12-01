@@ -20,7 +20,7 @@ class _FoodCardAppState extends State<FoodCardApp> with ImageDataMixin {
       child: Row(
         children: [
           FutureBuilder(
-            future: validateImage(widget.item.image!),
+            future: validateImage(widget.item.foodImage!),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 bool item = snapshot.data!;
@@ -32,7 +32,7 @@ class _FoodCardAppState extends State<FoodCardApp> with ImageDataMixin {
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           child: Image.network(
                             fit: BoxFit.cover,
-                            widget.item.image!,
+                            widget.item.foodImage!,
                           ),
                         ),
                       )
@@ -62,19 +62,19 @@ class _FoodCardAppState extends State<FoodCardApp> with ImageDataMixin {
               runSpacing: 10,
               children: [
                 Text(
-                  widget.item.name ?? '',
+                  widget.item.foodName ?? '',
                   textScaleFactor: 1.2,
                   style: TextStyle(color: appColorTitle, fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  widget.item.description ?? '',
+                  widget.item.foodDescription ?? '',
                   overflow: TextOverflow.ellipsis,
                   maxLines: 3,
                   softWrap: false,
                   style: TextStyle(color: appColorDescription),
                 ),
                 Text(
-                  'R\$' + widget.item.price.toString(),
+                  'R\$' + widget.item.foodPrice.toString(),
                   textScaleFactor: 1.2,
                   style: TextStyle(color: appColorTitle, fontWeight: FontWeight.bold),
                 ),

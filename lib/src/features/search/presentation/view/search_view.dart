@@ -5,7 +5,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:quick_pick_app/routes/app_router.gr.dart';
-import 'package:quick_pick_app/src/features/search/data/models/menu_model.dart';
+
+import 'package:quick_pick_app/src/utils/common/domain/menu_model.dart';
+import 'package:quick_pick_app/src/utils/common/domain/restaurant_model.dart';
 
 import 'package:quick_pick_app/src/utils/common/widgets/filter_card_app.dart';
 import 'package:quick_pick_app/src/utils/common/widgets/restaurant_card_app.dart';
@@ -24,8 +26,8 @@ class _SearchViewState extends State<SearchView> {
 
   search.SearchController _searchController = search.SearchController();
 
-  List<MenuModel> items = [];
-  List<MenuModel> duplicateItems = [];
+  List<RestaurantModel> items = [];
+  List<RestaurantModel> duplicateItems = [];
 
   void filterSearchResults(
     String query,
@@ -35,7 +37,7 @@ class _SearchViewState extends State<SearchView> {
     });
   }
 
-  Future<List<MenuModel>>? itemsFuture;
+  Future<List<RestaurantModel>>? itemsFuture;
 
   @override
   void initState() {
@@ -74,7 +76,7 @@ class _SearchViewState extends State<SearchView> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           if (items.isEmpty && duplicateItems.isEmpty) {
-            items = snapshot.data as List<MenuModel>;
+            items = snapshot.data as List<RestaurantModel>;
             duplicateItems = items;
           }
 
@@ -189,10 +191,10 @@ class _SearchViewState extends State<SearchView> {
                             return SizedBox(height: 20);
                           },
                           itemBuilder: (context, index) {
-                            MenuModel item = items[index];
+                            RestaurantModel item = items[index];
                             return GestureDetector(
                               onTap: () async => await context.router.navigate(RestaurantMain(restaurantId: item.id!)),
-                              child: RestaurantCardApp(menuModel: item),
+                              child: RestaurantCardApp(restaurantModel: item),
                             );
                           },
                         )))

@@ -7,15 +7,7 @@ class MenuModel {
   String? createdAt;
   String? updatedAt;
 
-  MenuModel({
-    this.id,
-    this.name,
-    this.description,
-    this.image,
-    this.isActive,
-    this.createdAt,
-    this.updatedAt,
-  });
+  MenuModel({this.id, this.name, this.description, this.image, this.isActive, this.createdAt, this.updatedAt});
 
   MenuModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

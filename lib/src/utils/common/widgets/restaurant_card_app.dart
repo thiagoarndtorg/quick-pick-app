@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:quick_pick_app/src/features/search/data/models/menu_model.dart';
+
 import 'package:quick_pick_app/src/utils/app_colors.dart';
+import 'package:quick_pick_app/src/utils/common/domain/restaurant_model.dart';
 
 import 'package:quick_pick_app/src/utils/common/mixins/image_data_mixin.dart';
 
 class RestaurantCardApp extends StatefulWidget {
-  final MenuModel menuModel;
-  const RestaurantCardApp({super.key, required this.menuModel});
+  final RestaurantModel restaurantModel;
+  const RestaurantCardApp({super.key, required this.restaurantModel});
 
   @override
   State<RestaurantCardApp> createState() => _RestaurantCardAppState();
@@ -27,7 +28,7 @@ class _RestaurantCardAppState extends State<RestaurantCardApp> with ImageDataMix
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               FutureBuilder(
-                future: validateImage(widget.menuModel.image!),
+                future: validateImage(widget.restaurantModel.menu!.image!),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     bool item = snapshot.data!;
@@ -39,7 +40,7 @@ class _RestaurantCardAppState extends State<RestaurantCardApp> with ImageDataMix
                               borderRadius: BorderRadius.all(Radius.circular(10)),
                               child: Image.network(
                                 fit: BoxFit.cover,
-                                widget.menuModel.image!,
+                                widget.restaurantModel.menu!.image!,
                               ),
                             ),
                           )
@@ -63,7 +64,7 @@ class _RestaurantCardAppState extends State<RestaurantCardApp> with ImageDataMix
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    widget.menuModel.name ?? '',
+                    widget.restaurantModel.name ?? '',
                     textScaleFactor: 1.2,
                     style: TextStyle(color: appColorTitle, fontWeight: FontWeight.bold),
                   ),
@@ -74,7 +75,7 @@ class _RestaurantCardAppState extends State<RestaurantCardApp> with ImageDataMix
                       strutStyle: StrutStyle(fontSize: 12.0),
                       text: TextSpan(
                         style: TextStyle(color: appColorDescription),
-                        text: widget.menuModel.description ?? '',
+                        text: widget.restaurantModel.description ?? '',
                       ),
                     ),
                   ),
