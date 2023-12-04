@@ -10,17 +10,16 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i10;
 import 'package:flutter/material.dart' as _i11;
+import 'package:quick_pick_app/src/features/food/data/model/food_model.dart';
 import 'package:quick_pick_app/src/features/food/food_main.dart' as _i2;
 import 'package:quick_pick_app/src/features/home/home_main.dart' as _i3;
 import 'package:quick_pick_app/src/features/login/login_main.dart' as _i4;
 import 'package:quick_pick_app/src/features/orders/orders_main.dart' as _i5;
 import 'package:quick_pick_app/src/features/profile/profile_main.dart' as _i6;
 import 'package:quick_pick_app/src/features/register/register_main.dart' as _i7;
-import 'package:quick_pick_app/src/features/restaurant/restaurant_main.dart'
-    as _i8;
+import 'package:quick_pick_app/src/features/restaurant/restaurant_main.dart' as _i8;
 import 'package:quick_pick_app/src/features/search/search_main.dart' as _i9;
-import 'package:quick_pick_app/src/utils/common/bottomNavigation/bottom_navigation_main.dart'
-    as _i1;
+import 'package:quick_pick_app/src/utils/common/bottomNavigation/bottom_navigation_main.dart' as _i1;
 
 abstract class $AppRouter extends _i10.RootStackRouter {
   $AppRouter({super.navigatorKey});
@@ -39,7 +38,7 @@ abstract class $AppRouter extends _i10.RootStackRouter {
         routeData: routeData,
         child: _i2.FoodMain(
           key: args.key,
-          foodId: args.foodId,
+          foodModel: args.foodModel,
         ),
       );
     },
@@ -50,8 +49,7 @@ abstract class $AppRouter extends _i10.RootStackRouter {
       );
     },
     LoginMain.name: (routeData) {
-      final args =
-          routeData.argsAs<LoginMainArgs>(orElse: () => const LoginMainArgs());
+      final args = routeData.argsAs<LoginMainArgs>(orElse: () => const LoginMainArgs());
       return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i4.LoginMain(
@@ -116,36 +114,35 @@ class BottomNavigationMain extends _i10.PageRouteInfo<void> {
 class FoodMain extends _i10.PageRouteInfo<FoodMainArgs> {
   FoodMain({
     _i11.Key? key,
-    required int foodId,
+    required FoodModel foodModel,
     List<_i10.PageRouteInfo>? children,
   }) : super(
           FoodMain.name,
           args: FoodMainArgs(
             key: key,
-            foodId: foodId,
+            foodModel: foodModel,
           ),
           initialChildren: children,
         );
 
   static const String name = 'FoodMain';
 
-  static const _i10.PageInfo<FoodMainArgs> page =
-      _i10.PageInfo<FoodMainArgs>(name);
+  static const _i10.PageInfo<FoodMainArgs> page = _i10.PageInfo<FoodMainArgs>(name);
 }
 
 class FoodMainArgs {
   const FoodMainArgs({
     this.key,
-    required this.foodId,
+    required this.foodModel,
   });
 
   final _i11.Key? key;
 
-  final int foodId;
+  final FoodModel foodModel;
 
   @override
   String toString() {
-    return 'FoodMainArgs{key: $key, foodId: $foodId}';
+    return 'FoodMainArgs{key: $key, foodModel: $foodModel}';
   }
 }
 
@@ -181,8 +178,7 @@ class LoginMain extends _i10.PageRouteInfo<LoginMainArgs> {
 
   static const String name = 'LoginMain';
 
-  static const _i10.PageInfo<LoginMainArgs> page =
-      _i10.PageInfo<LoginMainArgs>(name);
+  static const _i10.PageInfo<LoginMainArgs> page = _i10.PageInfo<LoginMainArgs>(name);
 }
 
 class LoginMainArgs {
@@ -261,8 +257,7 @@ class RestaurantMain extends _i10.PageRouteInfo<RestaurantMainArgs> {
 
   static const String name = 'RestaurantMain';
 
-  static const _i10.PageInfo<RestaurantMainArgs> page =
-      _i10.PageInfo<RestaurantMainArgs>(name);
+  static const _i10.PageInfo<RestaurantMainArgs> page = _i10.PageInfo<RestaurantMainArgs>(name);
 }
 
 class RestaurantMainArgs {

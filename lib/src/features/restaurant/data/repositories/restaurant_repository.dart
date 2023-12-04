@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:quick_pick_app/src/features/restaurant/data/model/restaurant_model.dart';
+import 'package:quick_pick_app/src/features/food/data/model/food_model.dart';
 
 import 'package:quick_pick_app/src/utils/common/dio_client.dart';
 import 'package:quick_pick_app/src/utils/common/domain/restaurant_model.dart';

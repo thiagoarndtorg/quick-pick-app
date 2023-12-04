@@ -6,8 +6,7 @@ class DioClient {
   late String _baseUrl;
 
   DioClient() {
-    _baseUrl =
-        'https://api-quickqueue-9d311ca15f87.herokuapp.com/api/';
+    _baseUrl = 'https://api-quickqueue-9d311ca15f87.herokuapp.com/api/';
   }
 
   Dio defaultDio() {
@@ -21,10 +20,10 @@ class DioClient {
     );
   }
 
-  Dio authorizedDio(String token) {
+  Dio authorizedDio(String token, {String? baseUrl}) {
     return Dio(
       BaseOptions(
-        baseUrl: _baseUrl,
+        baseUrl: baseUrl != null ? baseUrl : _baseUrl,
         contentType: Headers.jsonContentType,
         responseType: ResponseType.json,
         connectTimeout: const Duration(seconds: 30),

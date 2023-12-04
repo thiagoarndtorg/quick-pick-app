@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.quick_pick_app">
    <application
-        android:label="quick_pick_app"
+        android:label="QuickQueue"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

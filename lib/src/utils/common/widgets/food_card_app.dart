@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quick_pick_app/src/features/restaurant/data/model/restaurant_model.dart';
+import 'package:quick_pick_app/src/features/food/data/model/food_model.dart';
+
 import 'package:quick_pick_app/src/utils/app_colors.dart';
 import 'package:quick_pick_app/src/utils/common/mixins/image_data_mixin.dart';
 

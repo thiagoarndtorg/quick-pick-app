@@ -95,24 +95,6 @@ class _SearchViewState extends State<SearchView> {
                 ),
                 SizedBox(height: 20),
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 20),
-                  height: 30,
-                  child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 10,
-                    separatorBuilder: (context, index) {
-                      return SizedBox(width: 20);
-                    },
-                    itemBuilder: (context, index) {
-                      return FilterCardApp(
-                        title: 'Kalzone',
-                        isSelected: index == 0 ? true : false,
-                      );
-                    },
-                  ),
-                ),
-                SizedBox(height: 20),
-                Container(
                   transform: Matrix4.translationValues(-10.0, 0.0, 0.0),
                   child: CarouselSlider(
                     options: CarouselOptions(

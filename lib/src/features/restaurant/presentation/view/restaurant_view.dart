@@ -4,8 +4,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:quick_pick_app/routes/app_router.gr.dart';
+import 'package:quick_pick_app/src/features/food/data/model/food_model.dart';
 import 'package:quick_pick_app/src/features/restaurant/application/restaurant_controller.dart';
-import 'package:quick_pick_app/src/features/restaurant/data/model/restaurant_model.dart';
 import 'package:quick_pick_app/src/utils/app_colors.dart';
 import 'package:quick_pick_app/src/utils/common/domain/restaurant_model.dart';
 import 'package:quick_pick_app/src/utils/common/mixins/image_data_mixin.dart';
@@ -85,7 +85,7 @@ class _RestaurantViewState extends State<RestaurantView> with ImageDataMixin {
                               child: Stack(
                                 children: [
                                   Container(
-                                    color: Colors.red,
+                                    color: appColorPrimary,
                                     width: MediaQuery.of(context).size.width,
                                     height: 80,
                                   ),
@@ -182,8 +182,7 @@ class _RestaurantViewState extends State<RestaurantView> with ImageDataMixin {
                                   FoodModel item = items[index];
                                   return GestureDetector(
                                     onTap: () async {
-                                      print(item);
-                                      await context.router.navigate(FoodMain(foodId: item.foodId!));
+                                      await context.router.navigate(FoodMain(foodModel: item));
                                     },
                                     child: FoodCardApp(
                                       item: item,

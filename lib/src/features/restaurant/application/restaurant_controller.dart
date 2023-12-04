@@ -1,4 +1,5 @@
-import 'package:quick_pick_app/src/features/restaurant/data/model/restaurant_model.dart';
+import 'package:quick_pick_app/src/features/food/data/model/food_model.dart';
+
 import 'package:quick_pick_app/src/features/restaurant/data/repositories/restaurant_repository.dart';
 import 'package:quick_pick_app/src/utils/common/domain/restaurant_model.dart';
 

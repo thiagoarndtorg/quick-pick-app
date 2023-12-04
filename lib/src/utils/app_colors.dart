@@ -11,3 +11,4 @@ const appColorBorder = Color(0XFFF3F3F3);
 const appColorIcon = Color(0xFFC6C6C6);
 const appColorLightGrey = Color(0xFFDBDBDB);
 const appColorGreen = Color(0xFF939B45);
+const appColorRed = Color(0xFFBA3127);
