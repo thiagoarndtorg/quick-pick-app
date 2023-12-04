@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:quick_pick_app/src/features/orders/application/orders_controller.dart';
+import 'package:quick_pick_app/src/features/orders/data/model/order_model.dart';
 import 'package:quick_pick_app/src/utils/app_colors.dart';
 import 'package:quick_pick_app/src/utils/common/domain/user_model.dart';
 import 'package:quick_pick_app/src/utils/common/mixins/user_hive_mixin.dart';
@@ -14,9 +16,19 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> with UserHiveMixin {
   UserModel? userData;
+
+  OrdersController _ordersController = OrdersController();
+  List<OrderModel> _ordersList = [];
+
   @override
   void initState() {
     userData = getUserData();
+    _ordersController.getOrders().then((value) {
+      setState(() {
+        _ordersList = value;
+      });
+    });
+    super.initState();
     super.initState();
   }
 
@@ -149,12 +161,12 @@ class _HomeViewState extends State<HomeView> with UserHiveMixin {
               ),
               child: ListView.separated(
                 shrinkWrap: true,
-                itemCount: 10,
+                itemCount: _ordersList.length,
                 separatorBuilder: (context, index) {
                   return SizedBox(height: 20);
                 },
                 itemBuilder: (context, index) {
-                  return StatusCardApp();
+                  return StatusCardApp(orderModel: _ordersList[index]);
                 },
               ),
             ),

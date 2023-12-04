@@ -35,10 +35,16 @@ class _FoodViewState extends State<FoodView> with ImageDataMixin {
               Container(
                 height: 150,
                 width: MediaQuery.of(context).size.width,
-                child: Image.network(
-                  widget.foodModel.foodImage ?? "",
-                  fit: BoxFit.cover,
-                ),
+                child: Image.network(widget.foodModel.foodImage ?? "", fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey,
+                    ),
+                    width: 70,
+                    height: 70,
+                  );
+                }),
               ),
               SizedBox(height: 20),
               Padding(
@@ -64,7 +70,7 @@ class _FoodViewState extends State<FoodView> with ImageDataMixin {
                     ),
                     SizedBox(height: 20),
                     Text(
-                      "R\$24,00",
+                      "R\$ ${widget.foodModel.foodPrice != null ? widget.foodModel.foodPrice.toString() : ""}",
                       textScaleFactor: 3,
                       style: TextStyle(color: appColorRed, fontWeight: FontWeight.bold),
                     )

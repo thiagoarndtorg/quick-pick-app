@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quick_pick_app/src/features/orders/application/orders_controller.dart';
+import 'package:quick_pick_app/src/features/orders/data/model/order_model.dart';
 import 'package:quick_pick_app/src/utils/app_colors.dart';
 import 'package:quick_pick_app/src/utils/common/widgets/button_app.dart';
 import 'package:quick_pick_app/src/utils/common/widgets/status_card_app.dart';
@@ -11,6 +13,18 @@ class OrdersView extends StatefulWidget {
 }
 
 class _OrdersViewState extends State<OrdersView> {
+  OrdersController _ordersController = OrdersController();
+  List<OrderModel> _ordersList = [];
+  @override
+  void initState() {
+    _ordersController.getOrders().then((value) {
+      setState(() {
+        _ordersList = value;
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,10 +35,6 @@ class _OrdersViewState extends State<OrdersView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Text('Fila'),
-                ),
                 Expanded(
                   child: Container(
                     height: MediaQuery.of(context).size.height,
@@ -35,12 +45,13 @@ class _OrdersViewState extends State<OrdersView> {
                     ),
                     child: ListView.separated(
                       shrinkWrap: true,
-                      itemCount: 10,
+                      itemCount: _ordersList.length,
                       separatorBuilder: (context, index) {
                         return SizedBox(height: 20);
                       },
                       itemBuilder: (context, index) {
-                        return StatusCardApp();
+                        OrderModel item = _ordersList[index];
+                        return StatusCardApp(orderModel: item);
                       },
                     ),
                   ),
@@ -48,13 +59,6 @@ class _OrdersViewState extends State<OrdersView> {
               ],
             ),
           ),
-          SizedBox(height: 40),
-          ButtonApp(
-            backgroundColor: appColorGreen,
-            title: 'Fazer pedido',
-            textColor: appColorWhite,
-            onPressed: () => {},
-          )
         ],
       ),
     );
