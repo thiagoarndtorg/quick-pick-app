@@ -113,7 +113,8 @@ class _FoodViewState extends State<FoodView> with ImageDataMixin {
   FoodController _foodController = FoodController();
   Future<void> makePayment() async {
     try {
-      paymentIntent = await _foodController.createPaymentIntent('100', 'brl');
+      paymentIntent = await _foodController.createPaymentIntent(
+          widget.foodModel.foodPrice != null ? widget.foodModel.foodPrice!.floor().toString() : "100", 'brl');
 
       //STEP 2: Initialize Payment Sheet
       await Stripe.instance
